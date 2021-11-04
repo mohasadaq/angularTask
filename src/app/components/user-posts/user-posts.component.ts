@@ -14,11 +14,12 @@ export class UserPostsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService : UsersService) { }
 
   userId : number = 0
-
+  userPosts = []
   ngOnInit(): void {
     this.userId = Number(this.route.snapshot.url[1].path)
 
     this.userService.getUserPosts(this.userId).subscribe(response=>{
+      this.userPosts=response
        console.log(response);
        
     })
